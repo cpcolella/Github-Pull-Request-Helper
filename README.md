@@ -10,3 +10,7 @@ This is a chrome extension that helps with making large pull requests easier to 
 
 ## Where to get it
 You can install this extension [here](https://test.com).
+
+## Binaries
+
+You can find the release binaries [here](./releases).
