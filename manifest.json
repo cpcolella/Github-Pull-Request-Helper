@@ -1,6 +1,6 @@
 {
     "name": "Github Pull Request Helper",
-    "version": "2.0",
+    "version": "2.0.0",
     "description": "Automatically expands all 'Load More...' butons on a GitHub pull request page. Can also hide all resolved items.",
     "permissions": [
         "activeTab",

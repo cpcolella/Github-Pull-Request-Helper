@@ -40,7 +40,11 @@ jobs:
         id: step3
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
         
-      - name: Switch to Release Folder
+      - name: Create Release Folder
+        id: step3point5
+        run: sed -i 's/"2.0.0"/"${{ steps.step2.outputs.new_tag }}"/g' ./release/manifest.json
+        
+      - name: Print Release Folder Contents
         id: step4
         run: ls -la release
           
@@ -94,6 +98,7 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
           # Name of zipped target upload file
           file-name: gpr_helper_${{ steps.step2.outputs.new_tag }}.zip
+
 
 
 
