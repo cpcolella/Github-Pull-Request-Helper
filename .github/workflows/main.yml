@@ -25,6 +25,17 @@ jobs:
         id: step1
         with:
           fetch-depth: '0'
+
+      # Creates a tag and bumps the version number up
+      - name: Github Tag Bump
+        id: step2dryrun
+        uses: anothrNick/github-tag-action@1.34.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: cpcolella
+          INITIAL_VERSION: 2.0.0
+          DRY_RUN: true
+          WITH_V: false
       
       # Creates a tag and bumps the version number up
       - name: Github Tag Bump
@@ -38,11 +49,11 @@ jobs:
       
       - name: Create Release Folder
         id: step3
-        run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+        run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release_${{ steps.step2.outputs.new_tag }}
         
       - name: Create Release Folder
         id: step3point5
-        run: sed -i 's/"2.0.0"/"${{ steps.step2.outputs.new_tag }}"/g' ./release/manifest.json
+        run: sed -i 's/"2.0.0"/"${{ steps.step2dryrun.outputs.new_tag }}"/g' ./release_${{ steps.step2.outputs.new_tag }}/manifest.json
         
       - name: Print Release Folder Contents
         id: step4
@@ -50,7 +61,7 @@ jobs:
           
       - name: Zip Folder
         id: step5
-        run: zip -r gpr_helper_${{ steps.step2.outputs.new_tag }}.zip ./release -x ".git/*" ".github/*"
+        run: zip -r gpr_helper_${{ steps.step2.outputs.new_tag }}.zip ./release_${{ steps.step2.outputs.new_tag }} -x ".git/*" ".github/*"
       
       - name: Create a Release
         id: step6
