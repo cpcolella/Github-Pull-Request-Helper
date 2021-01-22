@@ -1,1 +1,1 @@
-# Github-Pull-Request-Helper
+# Github Pull Request Helper
