@@ -48,8 +48,37 @@ jobs:
         id: step5
         run: zip -r release_${{ steps.step2.outputs.new_tag }}.zip ./release -x ".git/*" ".github/*"
       
-      #
+      - name: Create a Release
+        id: step6
+        uses: actions/create-release@v1.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag
+          tag_name: ${{ steps.step2.outputs.new_tag }}
+          # The name of the release. For example, `Release v1.0.1`
+          release_name: Release ${{ steps.step2.outputs.new_tag }}
+          # `true` to create a draft (unpublished) release, `false` to create a published one. Default: `false`
+          draft: false
+          # `true` to identify the release as a prerelease. `false` to identify the release as a full release. Default: `false`
+          prerelease: false
+          # Owner of the repository if it is not the current one
+          owner: cpcolella
       
+      - name: Upload a Release Asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # The URL for uploading assets to the release
+          upload_url: ${{ steps.step6.outputs.upload_url }}
+          # The path to the asset you want to upload
+          asset_path: ./release_${{ steps.step2.outputs.new_tag }}.zip
+          # The name of the asset you want to upload
+          asset_name: release_${{ steps.step2.outputs.new_tag }}.zip
+          # The content-type of the asset you want to upload. See the supported Media Types here: https://www.iana.org/assignments/media-types/media-types.xhtml for more information
+          asset_content_type: application/zip
+
       ## Publish to Chrome Store
       #- name: Chrome Extension upload & publish
       #  # You may pin to the exact commit or the version.
@@ -66,7 +95,7 @@ jobs:
       #    # Name of zipped target upload file
       #    file-name: release_${{ steps.step2.outputs.new_tag }}.zip
       #    # True Or False to publish after upload
-      #    publish: 
+      #    publish: True
 
 
 
