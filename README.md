@@ -13,4 +13,4 @@ You can install this extension [here](https://test.com).
 
 ## Binaries
 
-You can find the release binaries [here](./releases).
+You can find the release binaries [here](https://github.com/cpcolella/Github-Pull-Request-Helper/releases).
