@@ -1,5 +1,5 @@
 # Github Pull Request Helper
-This is a chrome extension that helps with making large pull requests easier to look at. 
+This is a chrome extension that helps with making large pull requests easier to navigate. 
 
 ## Functions
 - **Expand All**: This expands all of the hidden content on the pull request conversation page.
