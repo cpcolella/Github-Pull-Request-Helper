@@ -22,11 +22,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        id: step1
         with:
           fetch-depth: '0'
       
       # Creates a tag and bumps the version number up
       - name: Github Tag Bump
+        id: step2
         uses: anothrNick/github-tag-action@1.34.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,11 +37,18 @@ jobs:
           WITH_V: true
       
       - name: Create Release Folder
+        id: step3
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+        
       - name: Switch to Release Folder
-        run: |
-          cd release
-          ls -la
+        id: step4
+        run: ls -la release
+          
+      - name: Zip Folder
+        id: step5
+        run: zip -r release_${{ steps.step2.outputs.new_tag }}.zip ./release -x ".git/*" ".github/*"
+      
+      #
       
       ## Publish to Chrome Store
       #- name: Chrome Extension upload & publish
@@ -55,7 +64,7 @@ jobs:
       #    # Token client secret
       #    client-secret: 
       #    # Name of zipped target upload file
-      #    file-name: release.zip
+      #    file-name: release_${{ steps.step2.outputs.new_tag }}.zip
       #    # True Or False to publish after upload
       #    publish: 
 
