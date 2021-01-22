@@ -85,13 +85,13 @@ jobs:
         uses: Klemensas/chrome-extension-upload-action@v1.3
         with:
           # Auth refresh token
-          refresh-token: 1//066Rj1wZt4bL5CgYIARAAGAYSNwF-L9IrgUPIlFJWPedIxhxgtiS8n-vmB3G3lPVHlt4uuQu8O3rD1eOCrjsdUGyxk9TgXTyO3mY
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
           # Extension application target id
-          app-id: kalmlgjkibkjeepmlenkeljokfoijngl
+          app-id: ${{ secrets.APP_ID }}
           # Token client id
-          client-id: 616170437651-jkfmdva6i8vmk5ntc2rrf81p1u7ogcmo.apps.googleusercontent.com
+          client-id: ${{ secrets.CLIENT_ID }}
           # Token client secret
-          client-secret: Q6Nxm8sa4bp1lXteRl0Ef5Ts
+          client-secret: ${{ secrets.CLIENT_SECRET }}
           # Name of zipped target upload file
           file-name: gpr_helper_${{ steps.step2.outputs.new_tag }}.zip
 
