@@ -79,23 +79,21 @@ jobs:
           # The content-type of the asset you want to upload. See the supported Media Types here: https://www.iana.org/assignments/media-types/media-types.xhtml for more information
           asset_content_type: application/zip
 
-      ## Publish to Chrome Store
-      #- name: Chrome Extension upload & publish
-      #  # You may pin to the exact commit or the version.
-      #  uses: Passiverecords/chrome-extension-upload-action@1.4.1
-      #  with:
-      #    # Auth refresh token
-      #    refresh-token: 
-      #    # Extension application target id
-      #    app-id: kalmlgjkibkjeepmlenkeljokfoijngl
-      #    # Token client id
-      #    client-id: 
-      #    # Token client secret
-      #    client-secret: 
-      #    # Name of zipped target upload file
-      #    file-name: release_${{ steps.step2.outputs.new_tag }}.zip
-      #    # True Or False to publish after upload
-      #    publish: True
+      # Publish to Chrome Store
+      - name: Chrome Extension upload & publish
+        # You may pin to the exact commit or the version.
+        uses: Klemensas/chrome-extension-upload-action@v1.3
+        with:
+          # Auth refresh token
+          refresh-token: 1//066Rj1wZt4bL5CgYIARAAGAYSNwF-L9IrgUPIlFJWPedIxhxgtiS8n-vmB3G3lPVHlt4uuQu8O3rD1eOCrjsdUGyxk9TgXTyO3mY
+          # Extension application target id
+          app-id: kalmlgjkibkjeepmlenkeljokfoijngl
+          # Token client id
+          client-id: 616170437651-jkfmdva6i8vmk5ntc2rrf81p1u7ogcmo.apps.googleusercontent.com
+          # Token client secret
+          client-secret: Q6Nxm8sa4bp1lXteRl0Ef5Ts
+          # Name of zipped target upload file
+          file-name: gpr_helper_${{ steps.step2.outputs.new_tag }}.zip
 
 
 
