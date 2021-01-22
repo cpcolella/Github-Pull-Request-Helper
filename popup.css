@@ -1,0 +1,33 @@
+body {
+    background: rgb(250, 251, 252);
+    text-align: center;
+    font-size: 18px !important;
+    display: grid;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    height: auto;
+    width: auto;
+    outline: none;
+    color: white;
+    background: rgb(36, 41, 46);
+    white-space: nowrap;
+}
+
+hr {
+    margin: 2px 0px;
+}
+
+hr.dashed {
+    border-top: 2px dashed rgb(36, 41, 46);
+}
+
+hr.dotted {
+    border-top: 2px dotted rgb(36, 41, 46);
+}
+
+hr.solid {
+    border-top: 2px solid rgb(36, 41, 46);
+}
