@@ -1,16 +1,27 @@
 {
     "name": "Github Pull Request Helper",
     "version": "2.0.0",
-    "description": "Automatically expands all 'Load More...' butons on a GitHub pull request page. Can also hide all resolved items.",
+    "description": "Helps to make large GitHub pull requests easier to navigate.",
     "permissions": [
         "activeTab",
-        "declarativeContent"
+        "tabs",
+        "declarativeContent",
+        "storage",
+        "webNavigation",
+        "http://github.com/*",
+        "https://github.com/*"
     ],
     "background": {
         "scripts": [
+            "util.js",
             "background.js"
         ],
         "persistent": false
+    },
+    "options_page": "options.html",
+    "options_ui": {
+        "chrome_style": true,
+        "page": "options.html"
     },
     "page_action": {
         "default_popup": "popup.html",
