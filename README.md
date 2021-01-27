@@ -9,7 +9,7 @@ This is a chrome extension that helps with making large pull requests easier to 
 - **Show Commits**: This shows all commits.
 
 ## Where to get it
-You can install this extension [here](https://test.com).
+You can install this extension [here](https://chrome.google.com/webstore/category/extensions) (not yet available).
 
 ## Binaries
 
