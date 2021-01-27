@@ -19,7 +19,6 @@ function mutationCallback(mutations) {
                     }
                 }
             }
-            
         }
     }
 }
