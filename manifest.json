@@ -13,11 +13,22 @@
     ],
     "background": {
         "scripts": [
-            "util.js",
-            "background.js"
+            "js/util.js",
+            "js/background.js"
         ],
         "persistent": false
     },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://github.com/*/pull/*"
+            ],
+            "js": [
+                "js/util.js",
+                "js/github_navigation.js"
+            ]
+        }
+    ],
     "options_page": "options.html",
     "options_ui": {
         "chrome_style": true,

@@ -1,9 +1,11 @@
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
+let expandAllCounter = 0;
+
 var util = {
     expandAll: function () {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            let codeText = `const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+            let codeText = `const sleep` + (expandAllCounter) + ` = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
                 async function Expand() {
                     var elements = document.querySelectorAll("button.ajax-pagination-btn[type='submit'][data-disable-with]");
@@ -18,7 +20,7 @@ var util = {
                             elements[i].click();
                         }
                 
-                        await sleep(3000);
+                        await sleep` + (expandAllCounter) + `(3000);
                         console.log("Refreshing elements...");;
                         elements = document.querySelectorAll('button.ajax-pagination-btn[type="submit"][data-disable-with]');
                     }
@@ -29,6 +31,7 @@ var util = {
                 Expand();`;
 
             chrome.tabs.executeScript(tabs[0].id, { code: codeText });
+            expandAllCounter++;
         });
     },
     hideResolved: function() {
@@ -62,6 +65,19 @@ var util = {
 
             chrome.tabs.executeScript(tabs[0].id, { code: codeText });
         });
+    },
+    checkUrl: function(url) {
+        var pattern = "^https?:\\/\\/github.com\\/[^\\/]+\\/[^\\/]+\\/pull\\/(\\d+)";
+        var regex = new RegExp(pattern);
+        var result = regex.test(url);
+        return result;
+    },
+    autoApplyItems: function(currentUrl) {
+        let result = util.checkUrl(currentUrl);
+
+        if (result === true) {
+            util.setDefaults();
+        }
     },
     setDefaults: function() {
         chrome.storage.sync.get("autoExpand", function (val) {

@@ -14,26 +14,16 @@ chrome.runtime.onInstalled.addListener(function()
 
     eventList.forEach(function (e) {
         chrome.webNavigation[e].addListener(function (event) {
-            autoApplyItems(event.url);
+            util.autoApplyItems(event.url);
         });
     });
 
     chrome.tabs.onActivated.addListener(function (event) {
         chrome.tabs.get(event.tabId, function (tab)
         {
-            autoApplyItems(tab.url);
+            util.autoApplyItems(tab.url);
         });
     });
 });
 
 
-function autoApplyItems(currentUrl) {
-    var pattern = "^https?:\\/\\/github.com\\/[^\\/]+\\/[^\\/]+\\/pull\\/(\\d+)$";
-    var regex = new RegExp(pattern);
-    var result = regex.test(currentUrl);
-
-    if (result === true) {
-        //alert("On Pull Request Page!");
-        util.setDefaults();
-    }
-}
