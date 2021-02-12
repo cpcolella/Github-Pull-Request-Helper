@@ -66,6 +66,22 @@ var util = {
             chrome.tabs.executeScript(tabs[0].id, { code: codeText });
         });
     },
+    hideStatuses: function() {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let codeText = `var elements = document.querySelectorAll(".js-timeline-item  .TimelineItem[data-team-hovercards-enabled]:not([data-url]), .js-timeline-item > div > div[id|=pullrequestreview] > .TimelineItem:not([data-url]), .js-timeline-item > .TimelineItem:not([data-url]) > span.TimelineItem-badge.bg-blue.text-white")
+                elements.forEach(function(element) { element.closest(".js-timeline-item").setAttribute("style", "display: none !important;"); });`;
+
+            chrome.tabs.executeScript(tabs[0].id, { code: codeText });
+        });
+    },
+    showStatuses: function() {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let codeText = `var elements = document.querySelectorAll(".js-timeline-item  .TimelineItem[data-team-hovercards-enabled]:not([data-url]), .js-timeline-item > div > div[id|=pullrequestreview] > .TimelineItem:not([data-url]), .js-timeline-item > .TimelineItem:not([data-url]) > span.TimelineItem-badge.bg-blue.text-white")
+                elements.forEach(function(element) { element.closest(".js-timeline-item").removeAttribute("style"); });`;
+
+            chrome.tabs.executeScript(tabs[0].id, { code: codeText });
+        });
+    },
     checkUrl: function(url) {
         var pattern = "^https?:\\/\\/github.com\\/[^\\/]+\\/[^\\/]+\\/pull\\/(\\d+)";
         var regex = new RegExp(pattern);

@@ -5,6 +5,13 @@ body {
     display: grid;
 }
 
+.button-group {
+	margin: 0;
+	padding: 0;
+    display: grid;
+    grid-template: none / auto auto;
+}
+
 button.button {
     margin: 5px;
     padding: 10px 20px;

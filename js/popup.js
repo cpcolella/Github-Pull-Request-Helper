@@ -1,8 +1,11 @@
-let expandButton = document.getElementById('expandButton');
-let hideResolvedButton = document.getElementById('hideResolvedButton');
-let showResolvedButton = document.getElementById('showResolvedButton');
-let hideCommitsButton = document.getElementById('hideCommitsButton');
-let showCommitsButton = document.getElementById('showCommitsButton');
+let expandButton = document.getElementById("expandButton");
+let hideResolvedButton = document.getElementById("hideResolvedButton");
+let showResolvedButton = document.getElementById("showResolvedButton");
+let hideCommitsButton = document.getElementById("hideCommitsButton");
+let showCommitsButton = document.getElementById("showCommitsButton");
+let hideStatusesButton = document.getElementById("hideStatusesButton");
+let showStatusesButton = document.getElementById("showStatusesButton");
+
 let refreshButton = document.getElementById('refreshButton');
 
 expandButton.onclick = function(element)
@@ -28,6 +31,16 @@ hideCommitsButton.onclick = function (event)
 showCommitsButton.onclick = function (event)
 {
     util.showCommits();
+};
+
+hideStatusesButton.onclick = function (event)
+{
+    util.hideStatuses();
+};
+
+showStatusesButton.onclick = function (event)
+{
+    util.showStatuses();
 };
 
 refreshButton.onclick = function (event)
