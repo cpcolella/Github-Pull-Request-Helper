@@ -9,8 +9,20 @@ This is a chrome extension that helps with making large pull requests easier to 
 - **Show Commits**: This shows all commits.
 
 ## Where to get it
-You can install this extension [here](https://chrome.google.com/webstore/category/extensions) (not yet available).
 
-## Binaries
+### Chrome Web Store
 
-You can find the release binaries [here](https://github.com/cpcolella/Github-Pull-Request-Helper/releases).
+You can install this extension from the [chrome extension store](https://chrome.google.com/webstore/category/extensions) (not yet available) for free.
+
+### Manually
+
+You can also download the latest zip file from [here](releases/latest).
+
+Installation Instructions:
+1. Downlaod the latest zip file from the link above
+1. Extract the folder onto your computer
+1. Open the [chrome extensions interface[chrome://extensions] in Chrome
+1. Enable Developer Mode with the toggle in the upper right corner
+1. Click "Load Unpacked" in the upper left area
+1. Navigate to and select the folder where you unzipped the files
+1. Done!
