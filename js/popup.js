@@ -5,6 +5,8 @@ let hideCommitsButton = document.getElementById("hideCommitsButton");
 let showCommitsButton = document.getElementById("showCommitsButton");
 let hideStatusesButton = document.getElementById("hideStatusesButton");
 let showStatusesButton = document.getElementById("showStatusesButton");
+let hideCommentsButton = document.getElementById("hideCommentsButton");
+let showCommentsButton = document.getElementById("showCommentsButton");
 
 let refreshButton = document.getElementById('refreshButton');
 
@@ -41,6 +43,16 @@ hideStatusesButton.onclick = function (event)
 showStatusesButton.onclick = function (event)
 {
     util.showStatuses();
+};
+
+hideCommentsButton.onclick = function (event)
+{
+    util.hideComments();
+};
+
+showCommentsButton.onclick = function (event)
+{
+    util.showComments();
 };
 
 refreshButton.onclick = function (event)

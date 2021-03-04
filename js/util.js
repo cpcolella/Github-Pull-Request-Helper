@@ -69,7 +69,7 @@ var util = {
     hideStatuses: function() {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let codeText = `var elements = document.querySelectorAll(".js-timeline-item  .TimelineItem[data-team-hovercards-enabled]:not([data-url]), .js-timeline-item > div > div[id|=pullrequestreview] > .TimelineItem:not([data-url]), .js-timeline-item > .TimelineItem:not([data-url]) > span.TimelineItem-badge.bg-blue.text-white")
-                elements.forEach(function(element) { element.closest(".js-timeline-item").setAttribute("style", "display: none !important;"); });`;
+                elements.forEach(function(element) { element.setAttribute("style", "display: none !important;"); });`;
 
             chrome.tabs.executeScript(tabs[0].id, { code: codeText });
         });
@@ -77,7 +77,23 @@ var util = {
     showStatuses: function() {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             let codeText = `var elements = document.querySelectorAll(".js-timeline-item  .TimelineItem[data-team-hovercards-enabled]:not([data-url]), .js-timeline-item > div > div[id|=pullrequestreview] > .TimelineItem:not([data-url]), .js-timeline-item > .TimelineItem:not([data-url]) > span.TimelineItem-badge.bg-blue.text-white")
-                elements.forEach(function(element) { element.closest(".js-timeline-item").removeAttribute("style"); });`;
+                elements.forEach(function(element) { element.removeAttribute("style"); });`;
+
+            chrome.tabs.executeScript(tabs[0].id, { code: codeText });
+        });
+    },
+    hideComments: function() {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let codeText = `var elements = document.querySelectorAll(".TimelineItem.js-comment-container, .TimelineItem > .timeline-comment-group")
+                elements.forEach(function(element) { element.setAttribute("style", "display: none !important;"); });`;
+
+            chrome.tabs.executeScript(tabs[0].id, { code: codeText });
+        });
+    },
+    showComments: function() {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            let codeText = `var elements = document.querySelectorAll(".TimelineItem.js-comment-container, .TimelineItem > .timeline-comment-group")
+                elements.forEach(function(element) { element.removeAttribute("style"); });`;
 
             chrome.tabs.executeScript(tabs[0].id, { code: codeText });
         });
