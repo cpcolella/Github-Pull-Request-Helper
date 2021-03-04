@@ -7,6 +7,8 @@ This is a chrome extension that helps with making large pull requests easier to 
 - **Show Resolved**: This shows all resolved comments.
 - **Hide Commits**: This hides all commits.
 - **Show Commits**: This shows all commits.
+- **Hide Comments**: This hides all comments.
+- **Show Comments**: This shows all comments.
 
 ## Where to get it
 
