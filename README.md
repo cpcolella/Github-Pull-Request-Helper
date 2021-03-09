@@ -18,7 +18,7 @@ You can install this extension from the [chrome extension store](https://chrome.
 
 ### Manually
 
-You can also download the latest zip file from [here](releases/latest).
+You can also download the latest zip file from [here](https://github.com/cpcolella/Github-Pull-Request-Helper/releases/latest).
 
 Installation Instructions:
 1. Downlaod the latest zip file from the link above
