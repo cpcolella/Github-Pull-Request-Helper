@@ -12,9 +12,9 @@ This is a chrome extension that helps with making large pull requests easier to 
 
 ## Where to get it
 
-### Chrome Web Store
+### Chrome Web Store (Recommended)
 
-You can install this extension from the [chrome extension store](https://chrome.google.com/webstore/category/extensions) (not yet available) for free.
+You can install this extension from the [chrome extension store](https://chrome.google.com/webstore/detail/github-pull-request-helpe/kalmlgjkibkjeepmlenkeljokfoijngl) for free.
 
 ### Manually
 
