@@ -28,3 +28,7 @@ Installation Instructions:
 1. Click "Load Unpacked" in the upper left area
 1. Navigate to and select the folder where you unzipped the files
 1. Done!
+
+## License
+
+This code is licensed under the GNU General Public License. Details can be found [here](https://github.com/cpcolella/Github-Pull-Request-Helper/blob/main/LICENSE)
