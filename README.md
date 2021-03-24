@@ -31,4 +31,4 @@ Installation Instructions:
 
 ## License
 
-This code is licensed under the GNU General Public License. Details can be found [here](https://github.com/cpcolella/Github-Pull-Request-Helper/blob/main/LICENSE)
+This code is licensed under the GNU General Public License. Details can be found [here](https://github.com/cpcolella/Github-Pull-Request-Helper/blob/main/LICENSE).
