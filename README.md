@@ -23,7 +23,7 @@ You can also download the latest zip file from [here](https://github.com/cpcolel
 Installation Instructions:
 1. Downlaod the latest zip file from the link above
 1. Extract the folder onto your computer
-1. Open the [chrome extensions interface[chrome://extensions] in Chrome
+1. Open the [chrome extensions interface](chrome://extensions) in Chrome
 1. Enable Developer Mode with the toggle in the upper right corner
 1. Click "Load Unpacked" in the upper left area
 1. Navigate to and select the folder where you unzipped the files
@@ -31,4 +31,4 @@ Installation Instructions:
 
 ## License
 
-This code is licensed under the GNU General Public License. Details can be found [here](https://github.com/cpcolella/Github-Pull-Request-Helper/blob/main/LICENSE).
+This code is licensed under the GNU General Public License. Details can be found [here](LICENSE).
