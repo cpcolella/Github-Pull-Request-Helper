@@ -107,7 +107,3 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
           file-name: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
-
-
-
-
