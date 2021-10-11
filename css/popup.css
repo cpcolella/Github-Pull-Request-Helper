@@ -3,6 +3,7 @@ body {
     text-align: center;
     font-size: 18px !important;
     display: grid;
+    width: 300px;
 }
 
 .button-group {
