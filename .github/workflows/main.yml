@@ -50,15 +50,15 @@ jobs:
       - name: Create Release Folder
         id: createReleaseFolder
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release_${{ steps.tagBump.outputs.new_tag }}
-        
+      
       - name: Create Release Folder
         id: updateVersionInManifest
         run: sed -i 's/"2.0.0"/"${{ steps.newVersionNumber.outputs.new_tag }}"/g' ./release_${{ steps.tagBump.outputs.new_tag }}/manifest.json
-        
+      
       - name: Print Release Folder Contents
         id: printFolder
         run: ls -la release_${{ steps.tagBump.outputs.new_tag }}
-          
+      
       - name: Zip Folder
         id: zipFolder
         run: zip -r gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip ./release_${{ steps.tagBump.outputs.new_tag }} -x ".git/*" ".github/*"
