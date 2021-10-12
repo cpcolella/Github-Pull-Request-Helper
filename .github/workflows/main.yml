@@ -86,24 +86,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # The URL for uploading assets to the release
           upload_url: ${{ steps.createRelease.outputs.upload_url }}
-          # The path to the asset you want to upload
           asset_path: ./gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
-          # The name of the asset you want to upload
           asset_name: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
-          # The content-type of the asset you want to upload. See the supported Media Types here: https://www.iana.org/assignments/media-types/media-types.xhtml for more information
           asset_content_type: application/zip
-
-      # Publish to Chrome Store
+      
       - name: Chrome Extension Upload & Publish
-        id: uploadAndPublish
-        # You may pin to the exact commit or the version.
-        uses: Klemensas/chrome-extension-upload-action@v1.3
+        uses: trmcnvn/chrome-addon@v2
         with:
-          # Store Extension application id
-          app-id: ${{ secrets.APP_ID }}
-          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          extension: ${{ secrets.APP_ID }}
+          zip: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
-          file-name: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+      
