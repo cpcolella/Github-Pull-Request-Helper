@@ -94,8 +94,7 @@ jobs:
       - name: Chrome Extension Upload & Publish
         uses: cpcolella/chrome-addon@master
         with:
-          extension: ${{ secrets.APP_ID }}
-          zip: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
+          extension-id: ${{ secrets.APP_ID }}
+          zip-path: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
           client-id: ${{ secrets.CLIENT_ID }}
-          client-secret: ${{ secrets.CLIENT_SECRET }}
           refresh-token: ${{ secrets.REFRESH_TOKEN }}
