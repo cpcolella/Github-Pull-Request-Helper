@@ -92,7 +92,7 @@ jobs:
           asset_content_type: application/zip
       
       - name: Chrome Extension Upload & Publish
-        uses: trmcnvn/chrome-addon@v2
+        uses: mikeyaworski/chrome-addon@master
         with:
           extension: ${{ secrets.APP_ID }}
           zip: gpr_helper_${{ steps.tagBump.outputs.new_tag }}.zip
