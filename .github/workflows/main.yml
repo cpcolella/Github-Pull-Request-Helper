@@ -25,7 +25,7 @@ jobs:
         id: checkout
         with:
           fetch-depth: '0'
-
+      
       # Creates a tag and bumps the version number up
       - name: Get New Version Number
         id: newVersionNumber
