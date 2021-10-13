@@ -1,61 +1,60 @@
 {
-    "name": "Github Pull Request Helper",
-    "version": "2.0.0",
-    "description": "Helps to make large GitHub pull requests easier to navigate.",
-    "permissions": [
-        "activeTab",
-        "tabs",
-        "declarativeContent",
-        "storage",
-        "webNavigation",
-        "http://github.com/*",
-        "https://github.com/*"
-    ],
-    "background": {
-        "scripts": [
-            "js/util.js",
-            "js/background.js"
-        ],
-        "persistent": false
+  "name": "Github Pull Request Helper",
+  "description": "Helps to make large GitHub pull requests easier to navigate.",
+  "version": "2.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "js/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://github.com/*/pull/*"
+      ],
+      "js": [
+        "js/util.js",
+        "js/github_navigation.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "declarativeContent",
+    "storage",
+    "webNavigation",
+    "scripting"
+  ],
+  "icons": {
+    "16": "images/PR_Helper_Logo_16.png",
+    "128": "images/PR_Helper_Logo_128.png",
+    "512": "images/PR_Helper_Logo_512.png",
+    "1600": "images/PR_Helper_Logo_1600.png",
+    "256": "images/PR_Helper_Logo_256.png",
+    "32": "images/PR_Helper_Logo_32.png",
+    "48": "images/PR_Helper_Logo_48.png",
+    "1024": "images/PR_Helper_Logo_1024.png"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "content_security_policy": {},
+  "options_page": "options.html",
+  "host_permissions": [
+    "http://github.com/*",
+    "https://github.com/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/PR_Helper_Logo_16.png",
+      "128": "images/PR_Helper_Logo_128.png",
+      "512": "images/PR_Helper_Logo_512.png",
+      "1600": "images/PR_Helper_Logo_1600.png",
+      "256": "images/PR_Helper_Logo_256.png",
+      "32": "images/PR_Helper_Logo_32.png",
+      "48": "images/PR_Helper_Logo_48.png",
+      "1024": "images/PR_Helper_Logo_1024.png"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "*://github.com/*/pull/*"
-            ],
-            "js": [
-                "js/util.js",
-                "js/github_navigation.js"
-            ]
-        }
-    ],
-    "options_page": "options.html",
-    "options_ui": {
-        "chrome_style": true,
-        "page": "options.html"
-    },
-    "page_action": {
-        "default_popup": "popup.html",
-        "default_icon": {
-            "16": "images/PR_Helper_Logo_16.png",
-            "32": "images/PR_Helper_Logo_32.png",
-            "48": "images/PR_Helper_Logo_48.png",
-            "128": "images/PR_Helper_Logo_128.png",
-            "256": "images/PR_Helper_Logo_256.png",
-            "512": "images/PR_Helper_Logo_512.png",
-            "1024": "images/PR_Helper_Logo_1024.png",
-            "1600": "images/PR_Helper_Logo_1600.png"
-        }
-    },
-    "icons": {
-        "16": "images/PR_Helper_Logo_16.png",
-		"32": "images/PR_Helper_Logo_32.png",
-		"48": "images/PR_Helper_Logo_48.png",
-		"128": "images/PR_Helper_Logo_128.png",
-		"256": "images/PR_Helper_Logo_256.png",
-		"512": "images/PR_Helper_Logo_512.png",
-		"1024": "images/PR_Helper_Logo_1024.png",
-		"1600": "images/PR_Helper_Logo_1600.png"
-    },
-    "manifest_version": 2
+    "default_popup": "popup.html"
+  }
 }
