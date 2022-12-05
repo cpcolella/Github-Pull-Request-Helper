@@ -29,7 +29,7 @@ jobs:
       # Creates a tag and bumps the version number up
       - name: Get New Version Number
         id: newVersionNumber
-        uses: anothrNick/github-tag-action@1.36.0
+        uses: anothrNick/github-tag-action@1.53.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: cpcolella
@@ -40,7 +40,7 @@ jobs:
       # Creates a tag and bumps the version number up
       - name: Github Tag Bump
         id: tagBump
-        uses: anothrNick/github-tag-action@1.36.0
+        uses: anothrNick/github-tag-action@1.53.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: cpcolella
