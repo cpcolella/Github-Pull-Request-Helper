@@ -1,5 +1,3 @@
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-
 var util = {
     expandAll: function () {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -86,33 +84,27 @@ var util = {
 };
 
 
-var NewUtil = (function () {
+const NewUtil = (function () {
     'use strict';
 
     async function Expand()
     {
-        let elements = document.querySelectorAll("button.ajax-pagination-btn[type='submit'][data-disable-with]");
-        let counter = 1;
-    
-        while (elements.length > 0)
+        let button = document.querySelector('button[data-disable-with^="Loading"]:not([disabled])');
+
+        while (button !== null)
         {
-            console.log("Expansion round " + counter++);
-    
-            for (let i = 0; i < elements.length; i++)
+            console.log("Expanding...");
+            button.click();
+            
+            while (document.querySelector('button[data-disable-with^="Loading"][disabled]') !== null)
             {
-                elements[i].click();
+                await Sleep(1000);
             }
             
-            let loadingItems = document.querySelectorAll('button.ajax-pagination-btn[type="submit"][data-disable-with][disabled]');
-            while (loadingItems.length > 0) {
-                await new Promise((resolve) => setTimeout(resolve, 2000));
-                loadingItems = document.querySelectorAll('button.ajax-pagination-btn[type="submit"][data-disable-with][disabled]');
-            }
-            
-            console.log("Refreshing elements...");
-            elements = document.querySelectorAll('button.ajax-pagination-btn[type="submit"][data-disable-with]');
+            console.log("Refreshing element...");
+            button = document.querySelector('button[data-disable-with^="Loading"]:not([disabled])');
         }
-    
+        
         console.log("Complete!");
     }
     
@@ -158,6 +150,10 @@ var NewUtil = (function () {
     async function ShowComments() {
         const elements = document.querySelectorAll(".TimelineItem.js-comment-container, .TimelineItem > .timeline-comment-group")
         elements.forEach(function(element) { element.removeAttribute("style"); });
+    }
+
+    function Sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
     }
 
     return {
